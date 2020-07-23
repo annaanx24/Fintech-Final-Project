@@ -44,3 +44,7 @@ def add():
 
     # return a message to the user
     return ""
+
+@app.route('/greetings')
+def greetings():
+    return "Trying again"
