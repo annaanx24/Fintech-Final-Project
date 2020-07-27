@@ -3,6 +3,7 @@
 from flask import Flask
 from flask import render_template
 from flask import request
+from datetime import datetime
 # from flask_pymongo import PyMongo
 
 
@@ -30,7 +31,7 @@ events = [
 @app.route('/index')
 
 def index():
-    return render_template('index.html', events = events)
+    return render_template('index.html', events = events, time=datetime.now())
 
 
 # CONNECT TO DB, ADD DATA
