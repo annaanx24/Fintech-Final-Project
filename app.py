@@ -7,6 +7,7 @@ from datetime import datetime
 import os
 from flask_pymongo import PyMongo
 from flask import session, url_for
+from flask import redirect
 
 
 # -- Initialization section --
@@ -92,3 +93,8 @@ def login():
                 return "You've been logged in!"
         #Otherwise return an error message 
         return "invalid password and/ or username"
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return render_template('index.html', time=datetime.now())
