@@ -4,48 +4,91 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from datetime import datetime
-# from flask_pymongo import PyMongo
+import os
+from flask_pymongo import PyMongo
+from flask import session, url_for
 
 
 # -- Initialization section --
 app = Flask(__name__)
 
-events = [
-        {"event":"First Day of Classes", "date":"2019-08-21"},
-        {"event":"Winter Break", "date":"2019-12-20"},
-        {"event":"Finals Begin", "date":"2019-12-01"}
-    ]
 
+name = os.environ["name"]
+pwd = os.environ["pwd"]
 # name of database
-# app.config['MONGO_DBNAME'] = 'database-name'
+app.config['MONGO_DBNAME'] = 'kidFinance'
 
 # URI of database
-# app.config['MONGO_URI'] = 'mongo-uri'
+app.config['MONGO_URI'] = f'mongodb+srv://{name}:{pwd}@cluster0.e8ums.mongodb.net/kidFinance?retryWrites=true&w=majority'
 
-# mongo = PyMongo(app)
+mongo = PyMongo(app)
 
 # -- Routes section --
 # INDEX
 
+app.secret_key = 'yoyo'
+
 @app.route('/')
 @app.route('/index')
-
 def index():
-    return render_template('index.html', events = events, time=datetime.now())
+    return render_template('index.html', time=datetime.now())
+
+@app.route('/learn')
+def learn():
+    return render_template('learn.html', time=datetime.now())
+
+@app.route('/games')
+def games():
+    return render_template('games.html', time=datetime.now())
 
 
-# CONNECT TO DB, ADD DATA
+# Go to signup page and add data
 
-@app.route('/add')
+@app.route('/signup', methods = ["GET", "POST"])
+def signup():
+    if request.method == "GET":
+        return render_template('signup.html', time=datetime.now())
+    else: #When user submits the form
 
-def add():
-    # connect to the database
+        #Store username and password as variable
+        username = request.form['username']
+        password = request.form['password']
+        #Connect to our user database
+        user = mongo.db.user
+        #Do query to see if user already exists
+        query = list(user.find({"name": username}))
+        #Visualize the query by printing it to terminal
+        print(query)
+        print(len(query))
+        #Check wether the user exists in our database already or not
+        if len(query) > 0:
+            return "User already exists" #NEEDS TO BE STYLED
+        else:
+            user.insert({"name": username, "password": password})
+            session["name"] = username
+            return "You've been added!"
 
-    # insert new data
+@app.route('/login', methods = ["GET", "POST"])
+def login():
+    if request.method == "GET":
+        return render_template('login.html', time=datetime.now())
+    else: #Default for when user submits the form
 
-    # return a message to the user
-    return ""
-
-@app.route('/greetings')
-def greetings():
-    return "Trying again"
+        #Store username and password as variable
+        username = request.form['username']
+        password = request.form['password']
+        #Connect to our user database
+        user = mongo.db.user
+        #Do query to see if user already exists
+        query = list(user.find({"name": username}))
+        #Visualize the query by printing it to terminal
+        print(query)
+        print(len(query))
+        #If pwd correct then set session to username
+        if len(query) == 1:
+            if password == query[0]["password"]:
+                session["name"] = username
+                print(session["name"])
+                return "You've been logged in!"
+        #Otherwise return an error message 
+        return "invalid password and/ or username"
