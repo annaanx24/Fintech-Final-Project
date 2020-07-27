@@ -1,0 +1,58 @@
+/* HOMEPAGE CSS */
+.index{
+    background: #B6E8F8;
+}
+
+#thenav{
+    background: #00A010;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    padding: 15px;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: center; */
+}
+
+.fas{
+    width: 30px;
+    height: 30px;
+}
+
+#bottombar{
+    background: #00A010;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    width: auto;
+}
+
+#topicscards{
+    background: #00A010;
+    color: white;
+    font-size: 24px;
+    border: none;
+    border-radius: 0;
+    object-fit: cover;
+    text-align: center;
+}
+
+.card-img-top{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* GAMES PAGE CSS */
+
+
+/* LEARN MORE PAGE CSS */
+
+
+/* SIGNUP OR LOGIN PAGE CSS */
