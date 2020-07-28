@@ -108,19 +108,32 @@
 
 /* SIGNUP & LOGIN PAGE CSS */
 
+.centersignup, .centerlogin{
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
 .container_signup, .container_login {
     border: 0;
     background: #00A010;
     /* -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box; 
     box-sizing: border-box; */
-    width: 50%;
+    width: 600px;
     margin: 0 auto;
-    position: relative;
-    top: 200px;
+    /* position: absolute; */
+    /* display: block; */
+    text-align: center;
+    /* margin-left: 50%;
+    margin-right: -50%; */
+    /* top: 25%;
+    bottom: 25%; */
     padding-top: 50px;
     padding-bottom: 50px;
-    vertical-align: center;
     border-radius:15px;
     box-shadow:0 0 15px 4px rgba(0,0,0,0.15);
 }
@@ -137,9 +150,10 @@
     border-radius:20px;
     border:0;
     box-shadow:0 0 15px 4px rgba(0,0,0,0.15);
-    display: grid;
+    margin: 0 auto;
+    /* display: grid;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; */
     max-width: 400px;
     text-align: center;
     color: black;
@@ -151,7 +165,7 @@ input[type=text], input[type=password] {
    font-size: 20px;
    padding: 10px;
    margin: 5px 0 22px 0;
-   display: grid;
+   /* display: grid; */
    border: none;
    /* background: #f1f1f1; */
 }
