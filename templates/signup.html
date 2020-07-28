@@ -3,15 +3,17 @@
         <link rel="stylesheet" href="../static/css/style.css?q={{time}}">
     </head>
     <body>
-        <div class="container_signup">
-        <form class="signupform" action="/signup" method="POST">
-            <label for="name" class="formtext">Name</label>
-            <input type="text" name="username" class="formbox">
-            <label for="password" class="formtext">Password</label>
-            <input type="password" name="password" class="formbox">
-            <input type="submit" value="Sign Up" class="formbox signupbox">
-        </form>
-        <div class="logininstead"><a href="/login"style="color:white">Already have an account? Login Here</a></div>
+        <div class="centersignup">
+            <div class="container_signup">
+                <form class="signupform" action="/signup" method="POST">
+                    <label for="name" class="formtext">Name</label>
+                    <input type="text" name="username" class="formbox">
+                    <label for="password" class="formtext">Password</label>
+                    <input type="password" name="password" class="formbox">
+                    <input type="submit" value="Sign Up" class="formbox signupbox">
+                </form>
+                <div class="logininstead"><a href="/login"style="color:white">Already have an account? Login Here</a></div>
+            </div>
         </div>
     </body>
 </html>
