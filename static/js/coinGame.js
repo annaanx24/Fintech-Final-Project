@@ -3,7 +3,7 @@
 /* global dist, angleMode, DEGREES, arc, clear, createCanvas, colorMode, HSB, width, height, random, background, fill, color, random,
           rect, rectMode, ellipse, stroke, image, loadImage, collideCircleCircle, collideRectCircle, text, tint, noTint
           mouseX, mouseY, strokeWeight, line, mouseIsPressed, noFill, windowWidth, windowHeight, noStroke, 
-          key, keyCode, textAlign, CENTER, BOLD, textStyle, PI, HALF_PI, Color, UP_ARROW, round, millis, keyIsDown, LEFT_ARROW, RIGHT_ARROW, DOWN_ARROW, textSize */
+          key, keyCode, createGraphics, textAlign, createButton, CENTER, BOLD, LEFT,TOP,textStyle, PI, HALF_PI, Color, UP_ARROW, round, millis, keyIsDown, LEFT_ARROW, RIGHT_ARROW, DOWN_ARROW, textSize */
 
 // Collide2D functions:
 /* global collideRectCircle */
@@ -14,8 +14,6 @@
 // let drop1FallSpeed;
 // let drop1;
 // let drop2;
-console.log("### p5.collide ###"),p5.prototype._collideDebug=!1,p5.prototype.collideDebug=function(a){_collideDebug=a},p5.prototype.collideRectRect=function(a,b,c,d,e,f,g,h){return a+c>=e&&e+g>=a&&b+d>=f&&f+h>=b?!0:!1},p5.prototype.collideRectCircle=function(a,b,c,d,e,f,g){var h=e,i=f;a>e?h=a:e>a+c&&(h=a+c),b>f?i=b:f>b+d&&(i=b+d);var j=this.dist(e,f,h,i);return g/2>=j?!0:!1},p5.prototype.collideCircleCircle=function(a,b,c,d,e,f){return this.dist(a,b,d,e)<=c/2+f/2?!0:!1},p5.prototype.collidePointCircle=function(a,b,c,d,e){return this.dist(a,b,c,d)<=e/2?!0:!1},p5.prototype.collidePointRect=function(a,b,c,d,e,f){return a>=c&&c+e>=a&&b>=d&&d+f>=b?!0:!1},p5.prototype.collidePointLine=function(a,b,c,d,e,f,g){var h=this.dist(a,b,c,d),i=this.dist(a,b,e,f),j=this.dist(c,d,e,f);return void 0===g&&(g=.1),h+i>=j-g&&j+g>=h+i?!0:!1},p5.prototype.collideLineCircle=function(a,b,c,d,e,f,g){var h=this.collidePointCircle(a,b,e,f,g),i=this.collidePointCircle(c,d,e,f,g);if(h||i)return!0;var j=a-c,k=b-d,l=this.sqrt(j*j+k*k),m=((e-a)*(c-a)+(f-b)*(d-b))/this.pow(l,2),n=a+m*(c-a),o=b+m*(d-b),p=this.collidePointLine(n,o,a,b,c,d);if(!p)return!1;this._collideDebug&&this.ellipse(n,o,10,10),j=n-e,k=o-f;var q=this.sqrt(j*j+k*k);return g/2>=q?!0:!1},p5.prototype.collideLineLine=function(a,b,c,d,e,f,g,h,i){var j,k=((g-e)*(b-f)-(h-f)*(a-e))/((h-f)*(c-a)-(g-e)*(d-b)),l=((c-a)*(b-f)-(d-b)*(a-e))/((h-f)*(c-a)-(g-e)*(d-b));if(k>=0&&1>=k&&l>=0&&1>=l){if(this._collideDebug||i)var m=a+k*(c-a),n=b+k*(d-b);return this._collideDebug&&this.ellipse(m,n,10,10),i?j={x:m,y:n}:!0}return i?j={x:!1,y:!1}:!1},p5.prototype.collideLineRect=function(a,b,c,d,e,f,g,h,i){var j,k,l,m,n;return i?(j=this.collideLineLine(a,b,c,d,e,f,e,f+h,!0),k=this.collideLineLine(a,b,c,d,e+g,f,e+g,f+h,!0),l=this.collideLineLine(a,b,c,d,e,f,e+g,f,!0),m=this.collideLineLine(a,b,c,d,e,f+h,e+g,f+h,!0),n={left:j,right:k,top:l,bottom:m}):(j=this.collideLineLine(a,b,c,d,e,f,e,f+h),k=this.collideLineLine(a,b,c,d,e+g,f,e+g,f+h),l=this.collideLineLine(a,b,c,d,e,f,e+g,f),m=this.collideLineLine(a,b,c,d,e,f+h,e+g,f+h)),j||k||l||m?i?n:!0:!1},p5.prototype.collidePointPoly=function(a,b,c){for(var d=!1,e=0,f=0;f<c.length;f++){e=f+1,e==c.length&&(e=0);var g=c[f],h=c[e];(g.y>b&&h.y<b||g.y<b&&h.y>b)&&a<(h.x-g.x)*(b-g.y)/(h.y-g.y)+g.x&&(d=!d)}return d},p5.prototype.collideCirclePoly=function(a,b,c,d,e){void 0==e&&(e=!1);for(var f=0,g=0;g<d.length;g++){f=g+1,f==d.length&&(f=0);var h=d[g],i=d[f],j=this.collideLineCircle(h.x,h.y,i.x,i.y,a,b,c);if(j)return!0}if(1==e){var k=this.collidePointPoly(a,b,d);if(k)return!0}return!1},p5.prototype.collideRectPoly=function(a,b,c,d,e,f){void 0==f&&(f=!1);for(var g=0,h=0;h<e.length;h++){g=h+1,g==e.length&&(g=0);var i=e[h],j=e[g],k=this.collideLineRect(i.x,i.y,j.x,j.y,a,b,c,d);if(k)return!0;if(1==f){var l=this.collidePointPoly(a,b,e);if(l)return!0}}return!1},p5.prototype.collideLinePoly=function(a,b,c,d,e){for(var f=0,g=0;g<e.length;g++){f=g+1,f==e.length&&(f=0);var h=e[g].x,i=e[g].y,j=e[f].x,k=e[f].y,l=this.collideLineLine(a,b,c,d,h,i,j,k);if(l)return!0}return!1},p5.prototype.collidePolyPoly=function(a,b,c){void 0==c&&(c=!1);for(var d=0,e=0;e<a.length;e++){d=e+1,d==a.length&&(d=0);var f=a[e],g=a[d],h=this.collideLinePoly(f.x,f.y,g.x,g.y,b);if(h)return!0;if(1==c&&(h=this.collidePointPoly(b[0].x,b[0].y,a)))return!0}return!1},p5.prototype.collidePointTriangle=function(a,b,c,d,e,f,g,h){var i=this.abs((e-c)*(h-d)-(g-c)*(f-d)),j=this.abs((c-a)*(f-b)-(e-a)*(d-b)),k=this.abs((e-a)*(h-b)-(g-a)*(f-b)),l=this.abs((g-a)*(d-b)-(c-a)*(h-b));return j+k+l==i?!0:!1},p5.prototype.collidePointPoint=function(a,b,c,d,e){return void 0==e&&(e=0),this.dist(a,b,c,d)<=e?!0:!1},p5.prototype.collidePointArc=function(a,b,c,d,e,f,g,h){void 0==h&&(h=0);var i=this.createVector(a,b),j=this.createVector(c,d),k=this.createVector(e,0).rotate(f),l=i.copy().sub(j);if(i.dist(j)<=e+h){var m=k.dot(l),n=k.angleBetween(l);if(m>0&&g/2>=n&&n>=-g/2)return!0}return!1};
-
 let coins;
 let pig;
 let score;
@@ -24,6 +22,23 @@ let isEndGame;
 let pigImg;
 let coinImg;
 let c;
+let button;
+let button2;
+let resetTime = 0;
+let ipad;
+let pool;
+let lego;
+let candy;
+let timeLimit;
+let popup;
+let mode;
+let selectedItem;
+let ipadImg 
+let poolImg 
+let legoImg 
+let candyImg 
+
+
 class Coin {
   constructor(x, y, d, fallSpeed) {
     this.x = x;
@@ -43,13 +58,12 @@ class Pig {
   constructor() {
     this.x = width / 2;
     this.size = 40;
-    this.y = height - (this.size+10);
+    this.y = height - (this.size + 10);
   }
 
   display() {
     fill(302, 58, 98);
     rect(this.x, this.y, this.size, this.size);
-    
   }
 
   move() {
@@ -84,16 +98,16 @@ class Pig {
     }
   }
 }
+
 function setup() {
   createCanvas(500, 500);
   colorMode(HSB);
   score = 0;
-  images()
-  // Variables for droplet 1
-  // drop1X = random(width);
-  // drop1Y = 0;
-  // drop1D = random(5, 15);
-  // drop1FallSpeed = random(8, 12);
+  mode = 1;
+  timeLimit = 5;
+  selectedItem = ""
+  popup = createGraphics(300, 300);
+  images();
   coins = [];
   for (let i = 0; i < 3; i++) {
     coins.push(new Coin(random(width), 0, 20, random(3, 7)));
@@ -101,77 +115,267 @@ function setup() {
   // Variables for droplet 2
   pig = new Pig();
   time = 0;
+
+  ipad = new Prize(30, 45, "iPad", 400);
+  pool = new Prize(270, 45, "Pool", 250);
+  lego = new Prize(30, 270, "Legos", 50);
+  candy = new Prize(270, 270, "Candy", 10);
+
   
 }
 
 function draw() {
   background(195, 27, 97);
-  //move all the coins
-  if (!isEndGame) {
-    for (let i = 0; i < coins.length; i++) {
-      coins[i].y += coins[i].fallSpeed;
-      // If it goes off the screen...
-      if (coins[i].y > height) {
-        // ...reset it...
-        coins[i].y = 0;
-        // ...and move it somewhere random.
-        coins[i].x = random(width);
-      }
-      coins[i].display();
-    }
   
-    overlayImages();
-    
-    pig.move();
-    pig.checkCollection();
-    textSize(20)
-    textStyle(BOLD)
-    fill(144, 100, 63)
-    text("Coins Collected: " + score, 10, 30);
-    time = round(millis() / 1000);
-    text("Time left: " + (60 - time), 10, 60);
-    //color ellipise
-    // fill(330, 49, 94)
-    // ellipse (250,250,50)
+  //move all the coins
+  if (mode == 1) {
+    screen1();
   }
-
-  if (time > 60) {
-    isEndGame = true;
+  else if (mode ==2) {
+    screen2();
   }
-  endGame();
+  else if(mode ==3) {
+    screen3();
+  }
 }
 
-function endGame() {
-  if (isEndGame) {
-    let coin = "coins"
-    if (score == 1) {
-      coin = "coin"
+function screen1() {
+  if (!isEndGame) {
+      for (let i = 0; i < coins.length; i++) {
+        coins[i].y += coins[i].fallSpeed;
+        // If it goes off the screen...
+        if (coins[i].y > height) {
+          // ...reset it...
+          coins[i].y = 0;
+          // ...and move it somewhere random.
+          coins[i].x = random(width);
+        }
+        coins[i].display();
+      }
+
+      overlayImages();
+
+      pig.move();
+      pig.checkCollection();
+      textSize(20);
+      textStyle(BOLD);
+      textAlign(LEFT, TOP);
+      fill(144, 100, 63);
+      text("Coins Collected: " + score, 10, 30);
+      time = round((millis() - resetTime) / 1000);
+      text("Time left: " + (timeLimit - time), 10, 60);
     }
-    textSize(40)
-    text("Game Over! \n Congratulations! \n You collected " + score + " "+ coin, 250, 250);
-    textAlign(CENTER, CENTER)
-//     $.ajax({
-//     url : "/games",
-//     data : {
-//             score: JSON.stringify(score),
-//     })
-//   }
+
+    if (time > timeLimit) {
+      mode = 2
+    }
+}
+
+function screen3() {
+  ipad.display();
+  pool.display();
+  lego.display();
+  candy.display();
+  textSize (15)
+  text(`You have ${score} coins`, width/2, 20)
+  // text(mouseX, 10, 10)
+  // text(mouseY, 10, 20)
+  //display item images
+  image(ipadImg, ipad.x, ipad.y, ipad.size, ipad.size);
+  image(poolImg, pool.x, pool.y, pool.size, pool.size);
+  image(legoImg, lego.x, lego.y, lego.size, lego.size);
+  image(candyImg, candy.x, candy.y, candy.size, candy.size);
+  
+  //to display popup of if the purchase is possible
+  popup.fill(255,255,255)
+  popup.textAlign(LEFT)
+  if (selectedItem=="ipad") {
+    
+    popup.clear()
+    popup.background('rgba(0, 0, 0, 0.75)')
+    
+    
+    if (ipad.checkPurchase()) {
+      console.log("enough money")
+      popup.text(`You have enough coins to buy the ${selectedItem}!\n Press v to buy!`,40,40)
+       
+    }
+    else {
+      console.log("NOT enough money")
+      popup.text(`Sorry, you do not have enough coins to buy\nthe ${selectedItem}. Press click another item to close.`, 40,40)
+      
+    }
+    image(popup, 50,50)
+    
+  }  
+  else if (selectedItem=="pool") {
+    popup.clear()
+    console.log("pool")
+     popup.background('rgba(0, 0, 0, 0.75)')
+    if (pool.checkPurchase()) {
+      console.log("enough money")
+      popup.text(`You have enough coins to buy the ${selectedItem}.\nBut you are ${ipad.price-score} coins from buying an ipad! \nPress v to buy ${selectedItem}. Click next to continue\ncollecting coins!`,10,40)
+     
+    }
+    else {
+      console.log("NOT enough money")
+      popup.text(`Sorry, you do not have enough coins to buy \nthe ${selectedItem}. Click another item to close.\nClick next to continue collecting coins!`, 40,40)
+      
+    }
+    image(popup, 50,50)
+  }  
+  
+  else if (selectedItem=="lego") {
+    popup.clear()
+     popup.background('rgba(0, 0, 0, 0.75)')
+    console.log("lego")
+    if (lego.checkPurchase()) {
+      console.log("enough money")
+      popup.text(`You have enough coins to buy the ${selectedItem}s.\nBut you are ${pool.price-score} coins from buying a pool! Press v to buy ${selectedItem}. Click next to continue\ncollecting coins!`,40,40)
+     
+    }
+    else {
+      console.log("NOT enough money")
+      popup.text(`Sorry, you do not have enough coins to buy \n${selectedItem}s. Click another item to close.\nClick next to continue collecting coins!`, 40,40)
+      
+    }
+    image(popup, 50,50)
+  }  
+  else if (selectedItem=="candy") {
+    popup.clear()
+    popup.background('rgba(0, 0, 0, 0.75)')
+    console.log("candy")
+    if (candy.checkPurchase()) {
+      console.log("enough money")
+      popup.text(`You have enough coins to buy ${selectedItem}.\nBut you are ${lego.price-score} coins from buying legos! Press v to buy ${selectedItem}. Click next to continue\ncollecting coins!`,40,40)
+     
+    }
+    else {
+      console.log("NOT enough money")
+      popup.text(`Sorry, you do not have enough coins to buy \n the ${selectedItem}. Click another item to close. \n Click next to continue collecting coins!`, 40,40)
+      
+    }
+    image(popup, 50,50)
+  }  
+}
+
+function mouseClicked() {
+  if (mouseX<230&&mouseX>30&&mouseY>45&&mouseY<245) {
+   console.log("ipad")
+    selectedItem = "ipad"
+  }  
+  else if (mouseX<470&&mouseX>270&&mouseY>45&&mouseY<245) {
+    console.log("pool")
+    selectedItem = "pool"
+  }  
+  
+  else if (mouseX<230&&mouseX>30&&mouseY>280&&mouseY<480) {
+    console.log("lego")
+    selectedItem = "lego"
+  }  
+  else if (mouseX<470&&mouseX>270&&mouseY>280&&mouseY<480) {
+    console.log("candy")
+    selectedItem = "candy"
+  }  
+  
+}
+
+ 
+function screen2() {
+ 
+    let coin = "coins";
+    if (score == 1) {
+      coin = "coin";
+    }
+    textSize(40);
+    text(
+      "Game Over! \n Congratulations! \n You collected " + score + " " + coin+ ". \n Click the next button \n to buy prizes!",
+      250,
+      250
+    );
+    textAlign(CENTER, CENTER);
+
+    button2 = createButton("Next!");
+    button2.position(width - 50, 19);
+    button2.mousePressed(prizeSelection);
+
+}
+
+class Prize {
+  constructor(x, y, name, price) {
+    this.x = x;
+    this.y = y;
+    this.name = name;
+    this.price = price;
+    this.image = 10; //change this var to actual image when you get it
+    this.size = 200;
   }
+
+  display() {
+    
+    text(`${this.name} | ${this.price} coins`, this.x+100, this.y+210)
+    // text(this.price +" coins", this.x+100, this.y+225)
+  }
+  
+  checkPurchase() {
+    if (score>=this.price) {
+      // popup.text("you can make purchase")
+      // image(popup, 50, 50)
+      return true
+      console.log("checking purchase")
+    }
+    else 
+      // popup.text("you can't make purchase")
+      // image(popup, 50, 50)
+      console.log("not enough money")
+      return false
+  }
+}
+
+function prizeSelection() {
+  if (mode!=3) {
+    mode+=1
+  }
+  else {
+    mode = 1
+    restart()
+  }
+
+  // button = createButton("Restart");
+  // button.position(width - 80, 19);
+  // button.mousePressed(restart);
 }
 
 function images() {
-  
   pigImg = loadImage(
     "https://cdn.glitch.com/075a41f8-cc68-4f5f-af51-36b05eee518b%2Fpiggy-bank-solid.svg?v=1595859772283"
   );
+
+  coinImg = loadImage(
+    "https://cdn.glitch.com/075a41f8-cc68-4f5f-af51-36b05eee518b%2F25498.jpg?v=1595864737068"
+  );
   
-  coinImg = loadImage("https://cdn.glitch.com/075a41f8-cc68-4f5f-af51-36b05eee518b%2F25498.jpg?v=1595864737068")
+  ipadImg = loadImage("https://cdn.glitch.com/075a41f8-cc68-4f5f-af51-36b05eee518b%2Fipad%20image.jpg?v=1595991487563")
+  
+  poolImg = loadImage("https://cdn.glitch.com/075a41f8-cc68-4f5f-af51-36b05eee518b%2Fpool%20image.png?v=1595991705340")
+  
+  legoImg = loadImage("https://cdn.glitch.com/075a41f8-cc68-4f5f-af51-36b05eee518b%2Flego%20man.jpg?v=1595991708603")
+  
+  candyImg = loadImage("https://cdn.glitch.com/075a41f8-cc68-4f5f-af51-36b05eee518b%2Fcandy.jpg?v=1595991715711")
 }
 
 function overlayImages() {
-  tint(330, 49, 94)
+  // tint(330, 49, 94);
   image(pigImg, pig.x, pig.y, pig.size, pig.size);
   // image(coinImg, coins[0].x, coins[0].y, coins[0].size, coins[0].d);
-
 }
 
+function restart() {
+  time = 0;
+  isEndGame = false;
+  coins = [];
+  for (let i = 0; i < 3; i++) {
+    coins.push(new Coin(random(width), 0, 20, random(3, 7)));
+  }
+  resetTime = millis();
+}
