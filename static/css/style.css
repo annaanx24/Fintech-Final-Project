@@ -70,15 +70,17 @@
     display: flex;
     justify-content: space-evenly;
     align-content: center;
+
     position: static;
     margin: 0;
+
     left: 0;
     right: 0;
-    bottom: 0;
     height: auto;
     width: auto;
     margin-top: 129.5px;
 }
+
 
 #topicscards{
     background: #00A010;
@@ -330,4 +332,6 @@ input[type=text], input[type=password] {
         border-radius: 50%;
     }
 
-}
+
+/* SIGNUP OR LOGIN PAGE CSS */
+

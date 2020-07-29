@@ -8,6 +8,8 @@ import os
 from flask_pymongo import PyMongo
 from flask import session, url_for
 from flask import redirect
+import chat
+import bcrypt 
 
 
 # -- Initialization section --
@@ -30,8 +32,16 @@ mongo = PyMongo(app)
 app.secret_key = 'yoyo'
 
 @app.route('/')
-@app.route('/index')
+@app.route('/index', methods = ["GET", "POST"])
 def index():
+    if request.method == "POST":
+      responseTing = ""
+      userMsg = request.form["msg"].lower()
+      print(userMsg)
+      responseTing = chat.chatResponse(userMsg)
+      print(responseTing)
+      return render_template('index.html',resp = responseTing, time=datetime.now())
+
     return render_template('index.html', time=datetime.now())
 
 @app.route('/learn')
@@ -65,7 +75,7 @@ def signup():
         if len(query) > 0:
             return "User already exists" #NEEDS TO BE STYLED
         else:
-            user.insert({"name": username, "password": password})
+            user.insert({"name": username, "password": str(bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()), "utf-8"), "coins": 0})
             session["name"] = username
             return "You've been added!"
 
@@ -87,7 +97,7 @@ def login():
         print(len(query))
         #If pwd correct then set session to username
         if len(query) == 1:
-            if password == query[0]["password"]:
+            if bcrypt.checkpw(request.form["password"].encode("utf-8"), query[0]["password"].encode("utf-8") ):
                 session["name"] = username
                 print(session["name"])
                 return "You've been logged in!"
@@ -98,3 +108,23 @@ def login():
 def logout():
     session.clear()
     return render_template('index.html', time=datetime.now())
+
+@app.route('/test/<coins>')
+def test(coins):
+    #1) Connect to db
+    user = mongo.db.user
+    #2) query that user
+    query = list(user.find({"name": session["name"]}))
+    print(query)
+    #2.5) Make current coins variable
+    curr_coins = query[0]["coins"]
+    print(curr_coins)
+    #3) update the coins with the argument that was passed in
+    user.update({"name": session["name"]}, {"$set": {"coins": int(coins)+int(curr_coins)}})
+    query = list(user.find({"name": session["name"]}))
+    print(query)
+
+    #4) Return link to homepage
+
+    #Display coins
+    return "In progress"
