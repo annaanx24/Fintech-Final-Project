@@ -33,6 +33,11 @@
     align-content: center; */
 }
 
+.logo{
+    font-weight: 700;
+    /* letter-spacing: 5px; */
+}
+
 /* carousel */
 #slidetitle{
     font-size: 28px;
@@ -40,22 +45,30 @@
     text-align: center;
     color: white;
     letter-spacing: 4px;
+    padding: 10px;
     /* padding-top: 40px; */
 }
 
 #carouselExample1{
     height: 450px;
     width: 100%;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-content: center;
+    align-content: center; */
 }
 
 .carousel-item{
-    min-height: 450px;
+    /* min-height: 450px;
+    width: 100%; */
     /* height: auto; */
-    width: 100%;
 }
+
+/* carousel images */
+
+/* .d-block w-100{
+    min-height: 450px;
+    width: 100%;
+} */
 
 /* icon */
 .usericon{
@@ -63,6 +76,7 @@
     height: 40px;
     align-content: center;
 }
+
 
 /* bottom bar */
 #bottombar{
@@ -78,7 +92,7 @@
     right: 0;
     height: auto;
     width: auto;
-    margin-top: 129.5px;
+    /* margin-top: 113px; */
 }
 
 
@@ -100,6 +114,12 @@
     height: 15vw;
     object-fit: cover;
     vertical-align: bottom;
+}
+
+.mascot-home{
+    width: 100px;
+    height: 200px;
+    z-index: 2;
 }
 
 /* GAMES PAGE CSS */
