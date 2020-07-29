@@ -100,3 +100,18 @@
 //   }
   
 // }
+
+// ChatBotJs
+var bot = document.getElementById("poptext");
+
+bot.onclick = function() {
+   modal.style.display = "popuptext";
+ }
+ 
+function openForm() {
+  document.getElementById("botHelp").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("botHelp").style.display = "none";
+}
