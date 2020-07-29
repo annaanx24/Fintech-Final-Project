@@ -104,7 +104,22 @@
 
 
 /* LEARN MORE PAGE CSS */
+.learntopic{
+    display: block;
+    margin: 20px;
+}
 
+.learntitle{
+    margin: 1px;
+    padding: 5px;
+}
+
+.learnpar{
+    border-left: solid #00A010 5px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 22px;
+}
 
 /* SIGNUP & LOGIN PAGE CSS */
 
@@ -188,11 +203,17 @@ input[type=text], input[type=password] {
 
 /* animated background */
 .area{
-    background: #B6E8F8;  
+    position: fixed;
+    background: #B6E8F8 no-repeat;
     background: -webkit-linear-gradient(to left, #B6E8F8, #00A010);  
     width: 100%;
     height:100vh;
     margin: auto;
+    z-index: -1;
+    top: 0; 
+    left: 0; 
+    min-width: 100%;
+    min-height: 100%;
    
 }
 
