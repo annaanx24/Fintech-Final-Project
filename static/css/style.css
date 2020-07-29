@@ -1,35 +1,84 @@
 /* HOMEPAGE CSS */
-.index{
-    background: #B6E8F8;
+
+/* everything */
+#index{
+    background: linear-gradient(
+      rgba(182, 232, 248, 0.8), 
+      rgba(182, 232, 248, 0.8)),
+      
+      url(https://image.freepik.com/free-photo/falling-banknotes-concept_23-2148542410.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: auto;
+    width: 100%;
 }
 
+/* nav bar */
 #thenav{
     background: #00A010;
     color: white;
     font-size: 24px;
     text-align: center;
     padding: 15px;
+    position: static;
+    margin: 0;
+    top: 0;
+    /* left: 0;
+    right: 0; */
+    height: auto;
+    width: auto;
     /* display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-content: center; */
 }
 
-.fas{
-    width: 30px;
-    height: 30px;
+/* carousel */
+#slidetitle{
+    font-size: 28px;
+    font-family: inherit;
+    text-align: center;
+    color: white;
+    letter-spacing: 4px;
+    /* padding-top: 40px; */
 }
 
+#carouselExample1{
+    height: 450px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.carousel-item{
+    min-height: 450px;
+    /* height: auto; */
+    width: 100%;
+}
+
+/* icon */
+.usericon{
+    width: 40px;
+    height: 40px;
+    align-content: center;
+}
+
+/* bottom bar */
 #bottombar{
     background: #00A010;
     display: flex;
     justify-content: space-evenly;
     align-content: center;
 
+    position: static;
+    margin: 0;
+
     left: 0;
     right: 0;
     height: auto;
     width: auto;
+    margin-top: 129.5px;
 }
 
 
@@ -41,18 +90,247 @@
     border-radius: 0;
     object-fit: cover;
     text-align: center;
+    display: flex;
+    align-content: space-between;
+    margin: 0;
 }
 
 .card-img-top{
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: 15vw;
     object-fit: cover;
+    vertical-align: bottom;
 }
 
 /* GAMES PAGE CSS */
 
 
 /* LEARN MORE PAGE CSS */
+.learntopic{
+    display: block;
+    margin: 20px;
+}
+
+.learntitle{
+    margin: 1px;
+    padding: 5px;
+}
+
+.learnpar{
+    border-left: solid #00A010 5px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 22px;
+}
+
+/* SIGNUP & LOGIN PAGE CSS */
+
+.centersignup, .centerlogin{
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.container_signup, .container_login {
+    border: 0;
+    background: #00A010;
+    /* -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box; 
+    box-sizing: border-box; */
+    width: 600px;
+    margin: 0 auto;
+    /* position: absolute; */
+    /* display: block; */
+    text-align: center;
+    /* margin-left: 50%;
+    margin-right: -50%; */
+    /* top: 25%;
+    bottom: 25%; */
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-radius:15px;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.15);
+}
+
+.signupform, .loginform {
+    /* box-sizing: border-box; */
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+}
+
+.formbox {
+    padding: 10px;
+    border-radius:20px;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.15);
+    margin: 0 auto;
+    /* display: grid;
+    margin-left: auto;
+    margin-right: auto; */
+    max-width: 400px;
+    text-align: center;
+    color: black;
+    background: white;
+}
+
+input[type=text], input[type=password] {
+   width: 100%;
+   font-size: 20px;
+   padding: 10px;
+   margin: 5px 0 22px 0;
+   /* display: grid; */
+   border: none;
+   /* background: #f1f1f1; */
+}
+
+.formtext {
+    color: white;
+    font-size: 20px;
+}
+
+.signupbox, .loginbox {
+    font-size: 16px;
+    background: #B6E8F8;
+    color: black;
+}
+
+.logininstead {
+    padding-top: 20px;
+    text-align: center;
+}
+
+/* animated background */
+.area{
+    position: fixed;
+    background: #B6E8F8 no-repeat;
+    background: -webkit-linear-gradient(to left, #B6E8F8, #00A010);  
+    width: 100%;
+    height:100vh;
+    margin: auto;
+    z-index: -1;
+    top: 0; 
+    left: 0; 
+    min-width: 100%;
+    min-height: 100%;
+   
+}
+
+.circles{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.circles li{
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+    
+}
+
+.circles li:nth-child(1){
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2){
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.circles li:nth-child(3){
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+
+.circles li:nth-child(4){
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.circles li:nth-child(5){
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+.circles li:nth-child(6){
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+
+.circles li:nth-child(7){
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+
+.circles li:nth-child(8){
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.circles li:nth-child(9){
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.circles li:nth-child(10){
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+
+
+@keyframes animate {
+
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
 
 
 /* SIGNUP OR LOGIN PAGE CSS */
@@ -179,4 +457,5 @@ footer img:hover{
 
 footer img{
   cursor: pointer;
+
 }
