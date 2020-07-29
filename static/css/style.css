@@ -3,8 +3,8 @@
 /* everything */
 #index{
     background: linear-gradient(
-      rgba(182, 232, 248, 0.8), 
-      rgba(182, 232, 248, 0.8)),
+      rgba(62, 250, 221, 0.8), 
+      rgba(62, 250, 221, 0.8)),
       
       url(https://image.freepik.com/free-photo/falling-banknotes-concept_23-2148542410.jpg);
     background-size: cover;
@@ -15,7 +15,7 @@
 
 /* nav bar */
 #thenav{
-    background: #00A010;
+    background: #4AB7FA;
     color: white;
     font-size: 24px;
     text-align: center;
@@ -80,7 +80,7 @@
 
 /* bottom bar */
 #bottombar{
-    background: #00A010;
+    background: #4AB7FA;
     display: flex;
     justify-content: space-evenly;
     align-content: center;
@@ -97,7 +97,7 @@
 
 
 #topicscards{
-    background: #00A010;
+    background: #4AB7FA;
     color: white;
     font-size: 24px;
     border: none;
@@ -116,11 +116,19 @@
     vertical-align: bottom;
 }
 
-.mascot-home{
-    width: 100px;
-    height: 200px;
+/* mascot */
+
+/* .mascot-home{
+    position: absolute;
+    left: 10px;
+    top: 570px;
     z-index: 2;
 }
+
+.dallahome{
+    height: 100px;
+    weight: 60px;
+} */
 
 /* GAMES PAGE CSS */
 
@@ -137,7 +145,7 @@
 }
 
 .learnpar{
-    border-left: solid #00A010 5px;
+    border-left: solid #4AB7FA 5px;
     margin: 10px;
     padding: 10px;
     font-size: 22px;
