@@ -157,6 +157,13 @@
     font-family: 'Ubuntu Condensed', sans-serif;
 }
 
+.learnimage-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25%
+}
+
 /* SIGNUP & LOGIN PAGE CSS */
 
 .centersignup, .centerlogin{
