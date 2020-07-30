@@ -20,7 +20,6 @@ def chatResponse(userMessage):
       8: "Nihao",
       9: "Nice to meet you",
       10: "It's a pleasure to meet you"
-       
     },
     
     "farewells": {
@@ -55,7 +54,7 @@ def chatResponse(userMessage):
   # All have to be lowercase for comparison
   greets = ["hello", "hi", "hey"]
   bye = ["bye", "see you", "goodbye"]
-  waste = ["fact", "money", "learn"]
+  money = ["fact", "money", "learn"]
   
   for i in greets:
     if userMessage.find(i) >=0:
@@ -65,7 +64,7 @@ def chatResponse(userMessage):
     if userMessage.find(i) >=0:
       return responses['farewells'][num]
 
-  for i in waste:
+  for i in money:
     if userMessage.find(i) >=0:
       return responses['moneyFacts'][num]
 
