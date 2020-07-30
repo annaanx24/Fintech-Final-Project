@@ -3,8 +3,8 @@
 /* everything */
 #index{
     background: linear-gradient(
-      rgba(62, 250, 221, 0.8), 
-      rgba(62, 250, 221, 0.8)),
+      rgba(193, 235, 249, 0.8), 
+      rgba(193, 235, 249, 0.8)),
       
       url(https://image.freepik.com/free-photo/falling-banknotes-concept_23-2148542410.jpg);
     background-size: cover;
@@ -15,9 +15,10 @@
 
 /* nav bar */
 #thenav{
-    background: #4AB7FA;
+    background: #14A76C;
     color: white;
-    font-size: 24px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 34px;
     text-align: center;
     padding: 15px;
     position: static;
@@ -27,21 +28,24 @@
     right: 0; */
     height: auto;
     width: auto;
-    /* display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-content: center; */
 }
 
-.logo{
+.col-lg-12{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+}
+
+#logo{
     font-weight: 700;
     /* letter-spacing: 5px; */
 }
 
 /* carousel */
 #slidetitle{
-    font-size: 28px;
-    font-family: inherit;
+    font-size: 34px;
+    font-family: 'Ubuntu Condensed', sans-serif;
     text-align: center;
     color: white;
     letter-spacing: 4px;
@@ -80,7 +84,7 @@
 
 /* bottom bar */
 #bottombar{
-    background: #4AB7FA;
+    background: #14A76C;
     display: flex;
     justify-content: space-evenly;
     align-content: center;
@@ -97,9 +101,10 @@
 
 
 #topicscards{
-    background: #4AB7FA;
+    background: #14A76C;
+    font-family: 'Ubuntu Condensed', sans-serif;
     color: white;
-    font-size: 24px;
+    font-size: 30px;
     border: none;
     border-radius: 0;
     object-fit: cover;
@@ -145,10 +150,11 @@
 }
 
 .learnpar{
-    border-left: solid #4AB7FA 5px;
+    border-left: solid #14A76C 5px;
     margin: 10px;
     padding: 10px;
-    font-size: 22px;
+    font-size: 28px;
+    font-family: 'Ubuntu Condensed', sans-serif;
 }
 
 /* SIGNUP & LOGIN PAGE CSS */
@@ -164,7 +170,7 @@
 
 .container_signup, .container_login {
     border: 0;
-    background: #00A010;
+    background: #14A76C;
     /* -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box; 
     box-sizing: border-box; */
@@ -207,7 +213,8 @@
 
 input[type=text], input[type=password] {
    width: 100%;
-   font-size: 20px;
+   font-size: 30px;
+   font-family: 'Ubuntu Condensed', sans-serif;
    padding: 10px;
    margin: 5px 0 22px 0;
    /* display: grid; */
@@ -217,11 +224,13 @@ input[type=text], input[type=password] {
 
 .formtext {
     color: white;
-    font-size: 20px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 30px;
 }
 
 .signupbox, .loginbox {
-    font-size: 16px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 24px;
     background: #B6E8F8;
     color: black;
 }
@@ -229,13 +238,15 @@ input[type=text], input[type=password] {
 .logininstead {
     padding-top: 20px;
     text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 20px;
 }
 
 /* animated background */
 .area{
     position: fixed;
     background: #B6E8F8 no-repeat;
-    background: -webkit-linear-gradient(to left, #B6E8F8, #00A010);  
+    background: -webkit-linear-gradient(to left, #B6E8F8, #14A76C);  
     width: 100%;
     height:100vh;
     margin: auto;
