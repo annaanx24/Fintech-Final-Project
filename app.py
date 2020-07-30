@@ -31,18 +31,27 @@ mongo = PyMongo(app)
 
 app.secret_key = 'yoyo'
 
-@app.route('/')
+responses = {"user": "", "bot":""}
+
+@app.route('/')  
 @app.route('/index', methods = ["GET", "POST"])
 def index():
-    if request.method == "POST":
-      responseTing = ""
-      userMsg = request.form["msg"].lower()
-      print(userMsg)
-      responseTing = chat.chatResponse(userMsg)
-      print(responseTing)
-      return render_template('index.html',resp = responseTing, time=datetime.now())
-
     return render_template('index.html', time=datetime.now())
+
+@app.route('/chatty', methods = ["GET", "POST"])
+def chatty():
+    print(request.form)
+    
+    if request.method == "POST":
+      print(request.form['user'])
+      responses["user"] = request.form['user'].lower() 
+      print("USER", responses["user"])
+      responses["bot"] = chat.chatResponse(responses["user"])
+      print("app: ",responses)
+    
+    if request.method == "GET":
+      return responses
+
 
 @app.route('/learn')
 def learn():

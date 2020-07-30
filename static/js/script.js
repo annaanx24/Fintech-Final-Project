@@ -103,16 +103,11 @@
 // }
 
 // ChatBotJs
-var bot = document.getElementById("poptext");
-
-bot.onclick = function() {
-   modal.style.display = "popuptext";
- }
  
 function openForm() {
   document.getElementById("botHelp").style.display = "block";
+  document.getElementById("botHelp").scrollTo(0, document.body.scrollHeight);
 }
 
-function closeForm() {
-  document.getElementById("botHelp").style.display = "none";
-}
+
+

@@ -14,6 +14,8 @@
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
 
     <body id="index">
@@ -134,10 +136,10 @@
     <div class="row" style="margin-top:5rem;">
       <div class="col-md-3">
         <h4>CONTACT<h4>
-              <h5 class="mt-3">Waste Erased<br>
+              <h5 class="mt-3">FinKids<br>
               Po Box 1000<br>
               New York, New York.<br> United States<br></h5>
-              <h5>questions@wasteerased.com<br> 
+              <h5>questions@finkids.com<br> 
               (987) 102-0945</h5>
         
       </div>
@@ -194,33 +196,30 @@
 <button class="open-button" onclick="openForm()"><img src="https://image.flaticon.com/icons/svg/892/892228.svg"style=" height:2rem;width:2rem;">Chat</button>
 
 <div class="chat-popup" id="botHelp">
-  <form method="post" action="/index" class="form-container">
-     <img src="https://image.flaticon.com/icons/svg/892/892228.svg"style=" height:2rem;width:2rem;"><h3>Hi! Welcome to the help desk</h3>
+  <form method="post" action="/index" class="form-container" id = "popText" onsubmit="return false">
+    <img src="https://image.flaticon.com/icons/svg/892/892228.svg"style=" height:2rem;width:2rem;"><h3>Hi! Welcome to the help desk</h3>
 
     <label for="msg"><b>Message</b></label>
     <br>
-    <br>
-    <br>
+
     <div class="container">
         <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
         <p>Hello. How are you today?</p>
         <span class="time-right">11:00</span>
-        </div>
+    </div>
 
-        <div class="container darker">
+    <div class="container darker">
         <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;">
         <p>Hey! I'm fine. Thanks for asking!</p>
         <span class="time-left">11:01</span>
-        </div>
+    </div>
+    <br class = "afterBubbleHere">
     <br>
-    <br>
-    
 
-
-    <textarea placeholder="Tell us what you need.." name="msg" required></textarea>
+    <textarea placeholder="Tell us what you need.." name="msg" id="msg" required></textarea>
 
     
-  <button onClick = "popChat()" type="submit" value="submit" class="botbtn ">Send</button>
+  <button type="submit" value="submit" class="botbtn" onClick="createBubble()">Send</button>
     <button type="button" class="botbtn cancel" onClick="closeForm()">Close</button>
   </form>
 </div>
@@ -233,6 +232,54 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js"></script>
+    
     <script src="../static/js/script.js?q={{time}}"></script>
+
+   <script type="text/javascript">
+   function closeForm() {
+  document.getElementById("botHelp").style.display = "none";
+}
+
+function createBubble(){
+    var userMsg = $("#msg").val();
+    console.log(userMsg)
+    obj = '{"user": "'+userMsg+'"}'
+    $.post("/chatty", JSON.parse(obj));
+
+    console.log(JSON.parse(obj))
+    var userMsg = $("<div></div>");
+
+    
+    userMsg.addClass("container darker");
+    userMsg.addClass("container::after");  
+    $(".afterBubbleHere").before(userMsg);
+    $.get("/chatty", function(data, status){
+    userMsg.text(data["user"]);
+    userMsg.prepend('<img src="theImg.png" style="width:100%;" class="right"/>');
+    userMsg.prepend('<span class="time-left">11:00</span>');
+   });
+    
+    
+    
+
+    var botMsg = $("<div></div>");
+    
+    
+
+
+    botMsg.addClass("container");
+    botMsg.addClass("container::after");  
+    $(".afterBubbleHere").before(botMsg);
+    $.get("/chatty", function(data, status){
+    botMsg.text(data["bot"]);
+    botMsg.prepend('<img src="theImg.png" style="width:100%;"/>');
+    botMsg.prepend('<span class="time-right">11:00</span>');
+  });
+    
+    
+    
+    
+} 
+    </script>
     </body>
 </html>
