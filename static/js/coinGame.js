@@ -108,9 +108,9 @@ function setup() {
     let canvas = createCanvas(500, 500);
     //   canvas.parent('coindash-holder');
     colorMode(HSB);
-    score = 50;
+    score = 0;
     mode = 1;
-    timeLimit = 3;
+    timeLimit = 30;
     selectedItem = "";
     popup = createGraphics(320, 100)
     images();
