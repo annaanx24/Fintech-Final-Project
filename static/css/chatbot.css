@@ -14,9 +14,9 @@
   height:90px;
   display: flex;
   align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-radius: 200px;
+  justify-content: center;
+  text-align: center;
+  border-radius: 200px;
 
 }
 
@@ -87,14 +87,27 @@
 footer{
   color:white;
   font-family: 'Lato', sans-serif;
-  
+  padding: 30px;
+  margin: 0 auto;
   bottom: 0;
-  padding-top:3rem;
+  /* padding-top:3rem; */
   left: 0;
   right: 0;
   height: auto;
   width: auto;
 }
+
+.input-group{
+    width: 100%;
+    height: auto;
+}
+
+.col-md-6, .col-md-3{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 !important;
+}
+
 /* Phincho: tried to change the button's color */
 .btn2{
   background-color:#EDAA00 !important;
