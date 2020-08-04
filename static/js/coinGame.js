@@ -106,6 +106,8 @@ class Pig {
 
 function setup() {
     let canvas = createCanvas(500, 500);
+    var myCanvas = canvas
+    myCanvas.parent("coindash-holder");
     //   canvas.parent('coindash-holder');
     colorMode(HSB);
     score = 0;
