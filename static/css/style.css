@@ -290,6 +290,11 @@ input[type=text], input[type=password] {
     font-size: 20px;
 }
 
+.signuplogoredirect, .loginlogoredirect{
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 30px;
+}
+
 /* animated background */
 .area{
     position: fixed;
