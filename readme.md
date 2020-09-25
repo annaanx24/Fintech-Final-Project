@@ -1,5 +1,6 @@
 # FinKids - A Financial Literacy Educational Platform for Kids
 by Althea Bata, Kamille Tipan, and Anna Xia as the final project for FinTech Focus 2020
+https://finkids.herokuapp.com/
 
 ## Features
 - Tabs for information with short phrases and visuals, game page, login, and homepage
